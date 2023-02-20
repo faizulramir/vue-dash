@@ -1,6 +1,7 @@
 <template>
-  <TopBar />
-  <SideBar />
+  <TopBar :topBarTitle="topBarTitle"/>
+  <SideBar @top-bar-title="setTitle"/>
+  <router-view @top-bar-title="setTitle"/>
 </template>
 
 <script>
@@ -12,6 +13,16 @@ export default {
   components: {
     SideBar,
     TopBar
+  },
+  data() {
+    return {
+      topBarTitle: 'Empty',
+    }
+  },
+  methods: {
+    setTitle (data) {
+      this.topBarTitle = data
+    }
   }
 }
 </script>

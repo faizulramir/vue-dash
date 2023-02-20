@@ -56,14 +56,14 @@
               v-for="(menuItem, index) in menuItems"
               :key="index"
             >
-              <li>
-                <a :href="menuItem.link">
+              <li @click="this.$emit('top-bar-title', menuItem.name)">
+                <router-link :to="menuItem.link">
                   <i
                     class="bx"
                     :class="menuItem.icon || 'bx-square-rounded'"
                   />
                   <span class="links_name">{{ menuItem.name }}</span>
-                </a>
+                </router-link>
                 <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
               </li>
             </span>
@@ -142,13 +142,13 @@
           type: Array,
           default: () => [
             {
-              link: '#',
+              link: '/',
               name: 'Dashboard',
               tooltip: 'Dashboard',
               icon: 'bx-grid-alt',
             },
             {
-              link: '#',
+              link: '/user',
               name: 'User',
               tooltip: 'User',
               icon: 'bx-user',
